@@ -1,0 +1,8 @@
+var util = {
+  ceil: function (value) {
+    return Math.ceil(value);
+  }
+}
+module.exports = {
+  ceil: util.ceil
+}
