@@ -31,19 +31,40 @@ Page({
     }, () => {
       //若队列里长度大于等于 2 了 则可以进行动画效果
       if (this.openItemArr.length>=2){
-        //当前打开的 flag与 上次打开的一致
-        if (this.data.boxList[this.openItemArr[0]].flag == this.data.boxList[this.openItemArr[1]].flag) {
-          this.openItemArr.shift();
-          this.openItemArr.shift();
-        }else{
-          setTimeout(() => {
-            //不一致 则重置
-            this.setSelected(this.openItemArr[0], false, false);
-            this.setSelected(this.openItemArr[1], false, false);
-            this.openItemArr.shift();
-            this.openItemArr.shift();
-          }, 1000);
+        let l = this.openItemArr.length % 2 ? this.openItemArr.length - 1 : this.openItemArr.length;
+        let startIndex = this.startIndex < 0 ? 0 : this.startIndex;
+        console.log("sss",startIndex, l)
+        for (let i = startIndex; i < (this.openItemArr.length % 2 ? this.openItemArr.length - 1 : this.openItemArr.length); i++){
+          if(!(i%2)) continue;//偶数则跳过
+
+          //当前打开的 flag与 上次打开的一致
+          if (this.data.boxList[this.openItemArr[i-1]].flag == this.data.boxList[this.openItemArr[i]].flag) {
+            this.openItemArr.splice(i-1,2);
+            this.startIndex-=2;
+            console.log("sss1", startIndex,i)
+            // this.openItemArr.shift();
+            // this.openItemArr.shift();
+          } else {
+            this.startIndex=i;
+            let prev = this.openItemArr[i - 1];
+            let next = this.openItemArr[i - 1];
+            setTimeout(() => {
+              console.log("sss2", startIndex,i)
+              //不一致 则重置
+              this.setSelected(prev, false, false);
+              this.setSelected(next, false, false);
+              this.openItemArr.splice(0, 2);
+              this.startIndex -= 2;
+              
+              // this.openItemArr.shift();
+              // this.openItemArr.shift();
+            }, 1000);
+          }
         }
+
+
+
+     
       }
     });
   },
@@ -75,6 +96,7 @@ Page({
       timingFunction: 'ease',
     });
     this.openItemArr=[];
+    this.startIndex=0;
   },
 
 
