@@ -32,9 +32,6 @@ page {
 
 
 
-
-
-
 .userinfo, .uploader, .tunnel {
   margin-top: 40rpx;
   height: 140rpx;

@@ -4,31 +4,59 @@ const app = getApp()
 Page({
   data: {
     boxList: [
-      { id: 1, flag: "1", name: "一", selected: false, animation:{} }, { id: 2, flag: "1", name: "一", selected: false, animation:{} }, 
-      { id: 3, flag: "2", name: "二", selected: false, animation:{} }, { id: 4, flag: "2", name: "二", selected: false, animation:{} }
+      { id: 1, flag: "1", name: "12", selected: false, animation: {} }, { id: 2, flag: "1", name: "12", selected: false, animation: {} },
+      { id: 3, flag: "2", name: "23", selected: false, animation: {} }, { id: 4, flag: "2", name: "23", selected: false, animation: {} },
+      { id: 5, flag: "1", name: "12", selected: false, animation: {} }, { id: 6, flag: "1", name: "12", selected: false, animation: {} },
+      { id: 7, flag: "2", name: "23", selected: false, animation: {} }, { id: 8, flag: "2", name: "23", selected: false, animation: {} },
     ],
-    boxLength:2,
+    boxLength:4,
   
   },
   //单个的点击事件
-  boxItemEvn(e){
+  boxItemEvn(e) {
     let curIndex = e.currentTarget.dataset.index;//当前 index
     let curItem = this.data.boxList[curIndex];
-    if (!curItem) return;
-    curItem.selected = true;
+    if (!curItem || this.openItemArr.indexOf(curIndex)>-1) return; //没有 或者 已经打开的 则返回
+    this.openItemArr.push(curIndex);//放入打开的队列里
+
+    this.animation.rotateY(180).step();//动画翻转180度
+    curItem.animation = this.animation.export();
+    curItem.selected = true;//设置选中字段
+    curItem.active = true;//用于标识有没有点过的
     let curStr = `boxList[${curIndex}]`;
-    let curAni = curStr+".animation"
-    console.log(curStr)
-    this.animation.scale(2, 2).rotate(45).step()
 
     //设置当前的值
     this.setData({
-      [curStr]:curItem,
-      [curAni]: this.animation.export()
+      [curStr]: curItem
+    }, () => {
+      //若队列里长度大于等于 2 了 则可以进行动画效果
+      if (this.openItemArr.length>=2){
+        //当前打开的 flag与 上次打开的一致
+        if (this.data.boxList[this.openItemArr[0]].flag == this.data.boxList[this.openItemArr[1]].flag) {
+          this.openItemArr.shift();
+          this.openItemArr.shift();
+        }else{
+          setTimeout(() => {
+            //不一致 则重置
+            this.setSelected(this.openItemArr[0], false, false);
+            this.setSelected(this.openItemArr[1], false, false);
+            this.openItemArr.shift();
+            this.openItemArr.shift();
+          }, 1000);
+        }
+      }
     });
-    
-
-
+  },
+  //设置selected的值以及动画
+  setSelected(index, flag, isActive){
+    let item = this.data.boxList[index];
+    if (!item) return;
+    this.animation.rotateY(flag?180:360).step();
+    //selected 设置成 以及动画
+    item.animation = this.animation.export();
+    item.selected = flag;
+    let itemStr = `boxList[${index}]`;
+    this.setData({ [itemStr]: item });
   },
   //通过ID 获取对应的值
   getCurrentItem(id){
@@ -45,7 +73,8 @@ Page({
     this.animation = wx.createAnimation({
       duration: 1000,
       timingFunction: 'ease',
-    })
+    });
+    this.openItemArr=[];
   },
 
 

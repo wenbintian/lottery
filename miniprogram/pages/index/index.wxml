@@ -4,10 +4,10 @@
   <view class='box'>
     <view
       class='box-item' wx:for="{{boxList}}" wx:key="{{item.id}}"
-      style='width:{{100/boxLength}}%; height:50%; left:{{(100/boxLength)*(((index+1)%boxLength||boxLength)-1)}}%; top:{{ (100/boxLength)*(util.ceil((index+1)/boxLength)-1) }}%'
+      style='width:{{100/boxLength}}%; height:{{100/boxLength}}%; left:{{(100/boxLength)*(((index+1)%boxLength||boxLength)-1)}}%; top:{{ (100/boxLength)*(util.ceil((index+1)/boxLength)-1) }}%'
       bindtap='boxItemEvn'
       data-index='{{index}}'
       animation="{{item.animation}}"
-    ><view class='box-item-inner'>{{item.selected ? item.name : '请选择' }}</view></view>
+    ><view class='box-item-inner' animation="{{item.animation}}">{{item.selected ? item.name : '请选择' }}</view></view>
   </view>
 </view>
