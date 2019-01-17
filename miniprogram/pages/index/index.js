@@ -16,8 +16,9 @@ Page({
   boxItemEvn(e) {
     let curIndex = e.currentTarget.dataset.index;//当前 index
     let curItem = this.data.boxList[curIndex];
-    if (!curItem || this.openItemArr.indexOf(curIndex)>-1) return; //没有 或者 已经打开的 则返回
+    if (!curItem || this.openNowItemArr.indexOf(curIndex)>-1) return; //没有、已经打开的、正在关闭的 则返回
     this.openItemArr.push(curIndex);//放入打开的队列里
+    this.openNowItemArr.push(curIndex);//放入打开的队列里
 
     this.animation.rotateY(180).step();//动画翻转180度
     curItem.animation = this.animation.export();
@@ -30,41 +31,25 @@ Page({
       [curStr]: curItem
     }, () => {
       //若队列里长度大于等于 2 了 则可以进行动画效果
-      if (this.openItemArr.length>=2){
-        let l = this.openItemArr.length % 2 ? this.openItemArr.length - 1 : this.openItemArr.length;
-        let startIndex = this.startIndex < 0 ? 0 : this.startIndex;
-        console.log("sss",startIndex, l)
-        for (let i = startIndex; i < (this.openItemArr.length % 2 ? this.openItemArr.length - 1 : this.openItemArr.length); i++){
-          if(!(i%2)) continue;//偶数则跳过
-
-          //当前打开的 flag与 上次打开的一致
-          if (this.data.boxList[this.openItemArr[i-1]].flag == this.data.boxList[this.openItemArr[i]].flag) {
-            this.openItemArr.splice(i-1,2);
-            this.startIndex-=2;
-            console.log("sss1", startIndex,i)
-            // this.openItemArr.shift();
-            // this.openItemArr.shift();
-          } else {
-            this.startIndex=i;
-            let prev = this.openItemArr[i - 1];
-            let next = this.openItemArr[i - 1];
-            setTimeout(() => {
-              console.log("sss2", startIndex,i)
-              //不一致 则重置
-              this.setSelected(prev, false, false);
-              this.setSelected(next, false, false);
-              this.openItemArr.splice(0, 2);
-              this.startIndex -= 2;
-              
-              // this.openItemArr.shift();
-              // this.openItemArr.shift();
-            }, 1000);
-          }
+      if (this.openItemArr.length >= 2) {
+        //当前打开的 flag与 上次打开的一致
+        if (this.data.boxList[this.openItemArr[0]].flag == this.data.boxList[this.openItemArr[1]].flag) {
+            this.openItemArr.shift();
+            this.openItemArr.shift();
+            this.openNowItemArr.shift();
+            this.openNowItemArr.shift();
+        }else{
+          this.openItemArr.shift();
+          this.openItemArr.shift();
+          setTimeout(() => {
+            // console.log("sss2", startIndex, i)
+            //不一致 则重置
+            this.setSelected(this.openNowItemArr[0], false, false);
+            this.setSelected(this.openNowItemArr[1], false, false);
+            this.openNowItemArr.shift();
+            this.openNowItemArr.shift();
+          }, 800);
         }
-
-
-
-     
       }
     });
   },
@@ -95,7 +80,8 @@ Page({
       duration: 1000,
       timingFunction: 'ease',
     });
-    this.openItemArr=[];
+    this.openItemArr = [];
+    this.openNowItemArr = [];
     this.startIndex=0;
   },
 
