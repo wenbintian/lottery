@@ -9,7 +9,11 @@ Page({
       { id: 5, flag: "1", name: "12", selected: false, animation: {} }, { id: 6, flag: "1", name: "12", selected: false, animation: {} },
       { id: 7, flag: "2", name: "23", selected: false, animation: {} }, { id: 8, flag: "2", name: "23", selected: false, animation: {} },
     ],
-    boxLength:4,
+    boxWLength: 4,//宽要几格
+    boxHLength: 4,//高要几格
+    boxType: 8,//要匹配的种类
+    boxHeight:200,
+    boxTypeList: ["香蕉", "苹果", "橘子", "香橙", "火龙果", "蜜柚", "百香果", "西瓜", "冬瓜", "雪梨", "哈密瓜"]
   
   },
   //单个的点击事件
@@ -74,6 +78,58 @@ Page({
     }
     return null;
   },
+  //根据 boxHLength/boxWLength/boxType 创建盒子
+  createBox(){
+    debugger
+    //较正 boxType种类
+    let l = this.data.boxHLength * this.data.boxWLength;
+    l = l%2 ? l-1 : l; 
+    //当前设置的类型
+    let boxType = (l / 2) > this.data.boxType ? this.data.boxType : (l / 2);
+
+    //创建boxList以及 设置 flag的值
+    let arr = [];
+    for(let i=0; i<(l/2); i++){
+      let t = {id:new Date().getTime(), flag:(i % boxType),animation:{},selected:false};
+      arr.push(t);
+      arr.push(t);
+    }
+    this.setData({ boxList: arr, boxType: boxType});
+  },
+  //等级设置
+  btnClickEvn(e){
+    let type=e.currentTarget.dataset.type;
+    // debugger
+    switch (type) {
+      case "1":
+        this.data.boxWLength = 2;
+        this.data.boxHLength = 3;
+        this.setData({ boxHLength: this.data.boxHLength, boxWLength: this.data.boxWLength });
+        this.createBox();
+        break;
+      case "2":
+        this.data.boxWLength = 3;
+        this.data.boxHLength = 4;
+        this.data.boxType = 4;
+        this.setData({ boxHLength: this.data.boxHLength, boxWLength: this.data.boxWLength, boxType: this.data.boxType });
+        this.createBox();
+        break;
+      case "3":
+        this.data.boxWLength = 4;
+        this.data.boxHLength = 4;
+        this.data.boxType = 6;
+        this.setData({ boxHLength: this.data.boxHLength, boxWLength: this.data.boxWLength, boxType: this.data.boxType });
+        this.createBox();
+        break;
+      case "4":
+        this.data.boxWLength = 4;
+        this.data.boxHLength = 5;
+        this.data.boxType = 8;
+        this.setData({ boxHLength: this.data.boxHLength, boxWLength: this.data.boxWLength, boxType: this.data.boxType });
+        this.createBox();
+        break;
+    }
+  },
 
   onShow: function(){
     this.animation = wx.createAnimation({
@@ -83,6 +139,8 @@ Page({
     this.openItemArr = [];
     this.openNowItemArr = [];
     this.startIndex=0;
+
+    this.createBox();
   },
 
 
@@ -113,6 +171,21 @@ Page({
         }
       }
     })
+
+    let _sel = this;
+    wx.getSystemInfo({
+      success:function(res){
+        console.log(res)
+        //设置盒子高度
+        _sel.setData({ boxHeight: res.windowHeight-150});
+      }
+    });
+
+    //设置初始值
+
+    this.boxTypeList = ["香蕉","苹果","橘子","香橙","火龙果","蜜柚","百香果","西瓜","冬瓜","雪梨","哈密瓜"];
+
+
   },
 
   // onGetUserInfo: function(e) {
