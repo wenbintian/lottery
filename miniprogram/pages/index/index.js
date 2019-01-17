@@ -20,41 +20,51 @@ Page({
   boxItemEvn(e) {
     let curIndex = e.currentTarget.dataset.index;//当前 index
     let curItem = this.data.boxList[curIndex];
-    if (!curItem || this.openNowItemArr.indexOf(curIndex)>-1) return; //没有、已经打开的、正在关闭的 则返回
+    
+    if (!curItem || this.openNowItemArr.indexOf(curIndex) > -1 || curItem.selected) return; //没有、已经打开的、正在关闭的 则返回
+
     this.openItemArr.push(curIndex);//放入打开的队列里
     this.openNowItemArr.push(curIndex);//放入打开的队列里
+    console.log("wwwww", this.openNowItemArr)
 
     this.animation.rotateY(180).step();//动画翻转180度
     curItem.animation = this.animation.export();
     curItem.selected = true;//设置选中字段
     curItem.active = true;//用于标识有没有点过的
     let curStr = `boxList[${curIndex}]`;
-
+    // console.log("data",this.data.boxList)
     //设置当前的值
     this.setData({
       [curStr]: curItem
     }, () => {
       //若队列里长度大于等于 2 了 则可以进行动画效果
       if (this.openItemArr.length >= 2) {
+        console.log("d", this.openItemArr.length, this.openNowItemArr.length)
         //当前打开的 flag与 上次打开的一致
         if (this.data.boxList[this.openItemArr[0]].flag == this.data.boxList[this.openItemArr[1]].flag) {
-            this.openItemArr.shift();
-            this.openItemArr.shift();
-            this.openNowItemArr.shift();
-            this.openNowItemArr.shift();
+          //将要移除的数据移除掉 
+          let c = this.openNowItemArr.indexOf(this.openItemArr[0]);
+          this.openNowItemArr.splice(c, 2);
+
+
+          this.openItemArr.splice(0, 2);
+      
         }else{
-          this.openItemArr.shift();
-          this.openItemArr.shift();
+          // this.openItemArr.shift();
+          // this.openItemArr.shift();
+          this.openItemArr.splice(0, 2);
           setTimeout(() => {
-            // console.log("sss2", startIndex, i)
+            console.log("sss2", curIndex, this.openItemArr.length, this.openNowItemArr.length, this.openNowItemArr)
             //不一致 则重置
             this.setSelected(this.openNowItemArr[0], false, false);
             this.setSelected(this.openNowItemArr[1], false, false);
-            this.openNowItemArr.shift();
-            this.openNowItemArr.shift();
-          }, 800);
+            this.openNowItemArr.splice(0,2);
+            // this.openNowItemArr.shift();
+            // this.openNowItemArr.shift();
+          }, 600);
         }
       }
+
     });
   },
   //设置selected的值以及动画
@@ -80,7 +90,7 @@ Page({
   },
   //根据 boxHLength/boxWLength/boxType 创建盒子
   createBox(){
-    debugger
+    // debugger
     //较正 boxType种类
     let l = this.data.boxHLength * this.data.boxWLength;
     l = l%2 ? l-1 : l; 
@@ -90,11 +100,16 @@ Page({
     //创建boxList以及 设置 flag的值
     let arr = [];
     for(let i=0; i<(l/2); i++){
-      let t = {id:new Date().getTime(), flag:(i % boxType),animation:{},selected:false};
+      let time = new Date().getTime()+i;
+      let t = { id: time, flag:(i % boxType),animation:{},selected:false};
       arr.push(t);
-      arr.push(t);
+      arr.push(Object.assign({}, t, { id: "temp" + time}));
     }
-    this.setData({ boxList: arr, boxType: boxType});
+    for(let i=0,l=arr.length; i<l; i++){
+      this.animation.rotateY(0).step();//重置动画翻转的角度 为0，解决 重新创建 不会出现动画的问题
+      arr[i].animation = this.animation.export();
+    }
+    this.setData({ boxList: arr, boxType: boxType });
   },
   //等级设置
   btnClickEvn(e){
@@ -129,6 +144,8 @@ Page({
         this.createBox();
         break;
     }
+    this.openItemArr=[];
+    this.openNowItemArr = [];
   },
 
   onShow: function(){

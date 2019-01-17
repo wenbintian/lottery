@@ -3,8 +3,8 @@
 <view class="container">
   <view class='box' style='height:{{boxHeight}}px;'>
     <view
-      class='box-item' wx:for="{{boxList}}" wx:key="{{item.id}}"
-      style='width:{{100/boxWLength}}%; height:{{100/boxHLength}}%; left:{{(100/boxWLength)*(((index+1)%boxWLength||boxWLength)-1)}}%; top:{{ (100/boxHLength)*(util.ceil((index+1)/boxWLength)-1) }}%'
+      class='box-item' wx:for="{{boxList}}" wx:key="id"
+      style='width:{{100/boxWLength}}%; height:{{100/boxHLength}}%; left:{{(100/boxWLength)*(((index+1)%boxWLength||boxWLength)-1)}}%; top:{{ (100/boxHLength)*(util.ceil((index+1)/boxWLength)-1) }}%;'
       bindtap='boxItemEvn'
       data-index='{{index}}'
       animation="{{item.animation}}"
