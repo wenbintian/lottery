@@ -1,7 +1,8 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/index/index",
-    "pages/storageConsole/storageConsole",
+    
     "pages/databaseGuide/databaseGuide"
   ],
   "window": {
