@@ -10,7 +10,7 @@ page {
 }
 .box{overflow: hidden; position: relative; width: 100%; height: 300rpx;}
 .box-item{position: absolute; padding: 1%; box-sizing: border-box;}
-.box-item-inner{background: #ddd; width: 100%; height: 100%; text-align: center; box-sizing: border-box; border-radius: 6rpx; border: 2rpx solid #FFF;}
+.box-item-inner{background: #ddd; width: 100%; height: 100%; text-align: center; box-sizing: border-box; border-radius: 6rpx; border: 2rpx solid #FFF; position: relative;}
 .input-box{width: 100%; overflow: hidden;}
 .input-box-item{float: left; width: 50%; padding-left: 2%; box-sizing: border-box;}
 .input-box-item:nth-child(2){float: right;}
@@ -43,3 +43,6 @@ page {
 
 .mask{position: fixed; width: 100%; height: 100%; z-index: 100;}
 .start-num{position: absolute; top: 50%; left: 50%; border-radius: 10rpx; margin-left:-115rpx; margin-top: -115rpx; width: 230rpx; height: 230rpx; text-align: center; background: rgba(0, 0, 0, 0.6); line-height: 230rpx; font-size: 80rpx; color: #fff;}
+
+.box-item-icon{width: 76%; height: 100%;}
+.box-item-text{position: absolute; left: 0; right: 4%; top: 2%; font-size: 80%; height: 50rpx; text-align: right;}

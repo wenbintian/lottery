@@ -8,7 +8,7 @@
     </view>
     <view class='box-title-item'>
       <view>关卡</view>
-      <view>第{{theGameNum}}关</view>
+      <view class='iconfont t-icon-shiliu'>第{{theGameNum}}关</view>
     </view>
   </view>
   <view class='box' style='height:{{boxHeight}}px;'>
@@ -18,8 +18,11 @@
       bindtap='boxItemEvn'
       data-index='{{index}}'
       animation="{{item.animation}}"
-    ><view class='box-item-inner color_{{item.selected ? item.flag : "normal"}}' 
-      animation="{{item.animation}}">{{item.selected ? boxTypeList[item.flag] : '' }}</view>
+    ><view class='box-item-inner color_normal' 
+      animation="{{item.animation}}">
+      <view class='box-item-text' wx:if="{{item.selected}}">{{boxTypeList[item.flag]}}</view>
+      <image class='box-item-icon' mode='aspectFit' src='../../images/{{item.selected ? boxTypeList[item.flag] : "normal"}}.png'></image>
+      </view>
       </view>
   </view>
   <!-- <view class='input-box'>

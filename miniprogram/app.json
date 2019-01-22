@@ -1,14 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/main/main",
-    "pages/databaseGuide/databaseGuide"
+    "pages/main/main"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "小田翻牌游戏",
+    "navigationBarTitleText": "记忆王",
     "navigationBarTextStyle": "black"
   }
 }

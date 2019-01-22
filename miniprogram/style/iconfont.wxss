@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1026384 */
+  src: url('//at.alicdn.com/t/font_1026384_2imne7rdozd.eot');
+  src: url('//at.alicdn.com/t/font_1026384_2imne7rdozd.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1026384_2imne7rdozd.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1026384_2imne7rdozd.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1026384_2imne7rdozd.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1026384_2imne7rdozd.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.t-icon-Dead:before {
+  content: "\e6ae";
+}
+
+.t-icon-Angry:before {
+  content: "\e6af";
+}
+
+.t-icon-Girlsmiling:before {
+  content: "\e6b0";
+}
+
+.t-icon-Frownyface:before {
+  content: "\e6b1";
+}
+
+.t-icon-Ninja:before {
+  content: "\e6b2";
+}
+
+.t-icon-Cool:before {
+  content: "\e6b3";
+}
+
+.t-icon-Inlove:before {
+  content: "\e6b4";
+}
+
+.t-icon-Crying:before {
+  content: "\e6b5";
+}
+
+.t-icon-Laughinghard:before {
+  content: "\e6b6";
+}
+
+.t-icon-Full:before {
+  content: "\e6b7";
+}
+
+.t-icon-Stickingtounge:before {
+  content: "\e6b8";
+}
+
+.t-icon-Sad:before {
+  content: "\e6b9";
+}
+
+.t-icon-Happyface:before {
+  content: "\e6ba";
+}
+
+.t-icon-Smilieface:before {
+  content: "\e6bb";
+}
+
+.t-icon-Smiling:before {
+  content: "\e6bc";
+}
+
+.t-icon-Sheep:before {
+  content: "\e6bd";
+}
+
+.t-icon-Sleeping:before {
+  content: "\e6be";
+}
+
+.t-icon-Smiling1:before {
+  content: "\e6bf";
+}
+
+.t-icon-Straightface:before {
+  content: "\e6c0";
+}
+
+.t-icon-Why:before {
+  content: "\e6c1";
+}
+
+.t-icon-Wink:before {
+  content: "\e6c2";
+}
+
+.t-icon-Kiss:before {
+  content: "\e6c3";
+}
+
+.t-icon-Wondering:before {
+  content: "\e6c4";
+}
+
+.t-icon-Saywhat:before {
+  content: "\e6c5";
+}
+
+.t-icon-Happy:before {
+  content: "\e6c6";
+}
+
+.t-icon-Yawning:before {
+  content: "\e6c7";
+}
+
+.t-icon-What:before {
+  content: "\e6c8";
+}
+
+.t-icon-Shocked:before {
+  content: "\e6c9";
+}
+
