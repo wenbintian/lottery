@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/main/main",
     "pages/index/index",
-    
+    "pages/main/main",
     "pages/databaseGuide/databaseGuide"
   ],
   "window": {

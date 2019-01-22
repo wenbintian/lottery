@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class='level-box'>
-    <button type='primary' size='mini' bindtap='btnClickEvn'>开始挑战</button>
+    <button type='primary' bindtap='btnClickEvn'>开始挑战</button>
   </view>
   <!-- <view class='level-box'>
     <button type='primary' size='mini' bindtap='btnClickEvn' data-type='1'>简单</button>

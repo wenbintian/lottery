@@ -1,8 +1,9 @@
 /**index.wxss**/
 
 page {
-  background: #fff;
+  background: #40d2ff;
   display: flex; font-size: 32rpx;
   flex-direction: column;
   justify-content: flex-start;
 }
+.level-box{padding-top: 8%;}

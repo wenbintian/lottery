@@ -3,10 +3,12 @@
 <view class="container">
   <view class='box-title'>
     <view class='box-title-item'>
-      <view>计时: 0s</view>
+      <view>计时/总</view>
+      <view>{{nowGameTime}}/{{gameAllTime}}s</view>
     </view>
     <view class='box-title-item'>
-      <view>第1关</view>
+      <view>关卡</view>
+      <view>第{{theGameNum}}关</view>
     </view>
   </view>
   <view class='box' style='height:{{boxHeight}}px;'>
@@ -19,12 +21,6 @@
     ><view class='box-item-inner color_{{item.selected ? item.flag : "normal"}}' 
       animation="{{item.animation}}">{{item.selected ? boxTypeList[item.flag] : '' }}</view>
       </view>
-  </view>
-  <view class='level-box'>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='1'>简单</button>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='2'>正常</button>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='3'>难</button>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='4'>急难</button>
   </view>
   <!-- <view class='input-box'>
     <view class='input-box-item'> <view class='input-item-text'>类型</view><input placeholder="输入匹配类型数"/></view><view class='input-box-item'>

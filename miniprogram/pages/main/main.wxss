@@ -24,7 +24,7 @@ page {
 .level-box button{width: 23%; margin:0 1%;}
 /* 头部 */
 .box-title{overflow: hidden; width: 100%; box-sizing: border-box; padding: 1% 2%; color: #ffdbaf; text-align: center; font-size: 28rpx; line-height: 36rpx;}
-.box-title .box-title-item{float: left; width: 44%; box-sizing: border-box; background: #c916e5; margin: 3%; border-radius: 4rpx; padding: 10rpx 0;}
+.box-title .box-title-item{float: left; width: 44%; box-sizing: border-box; background: #c916e5; margin: 2% 3%; border-radius: 4rpx; padding: 10rpx 0;}
 
 .box-item-inner.color_0{background-color: #FF6600;}
 .box-item-inner.color_1{background-color: #99FF00;}
@@ -42,4 +42,4 @@ page {
 .box-item-inner.color_normal{background-color: #FFCC99;}
 
 .mask{position: fixed; width: 100%; height: 100%; z-index: 100;}
-.start-num{position: absolute; top: 50%; left: 50%; border-radius: 10rpx; margin-left:-115rpx; margin-top: -115rpx; width: 230rpx; height: 230rpx; text-align: center; background: rgba(0, 0, 0, 0.3); line-height: 230rpx; font-size: 80rpx; color: #fff;}
+.start-num{position: absolute; top: 50%; left: 50%; border-radius: 10rpx; margin-left:-115rpx; margin-top: -115rpx; width: 230rpx; height: 230rpx; text-align: center; background: rgba(0, 0, 0, 0.6); line-height: 230rpx; font-size: 80rpx; color: #fff;}
