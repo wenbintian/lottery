@@ -1,9 +1,19 @@
 /**index.wxss**/
 
 page {
-  background: #40d2ff;
   display: flex; font-size: 32rpx;
   flex-direction: column;
   justify-content: flex-start;
+  background: -webkit-linear-gradient(right top, #8fdaf5 , #23beff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom left, #8fdaf5, #23beff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom left, #8fdaf5, #23beff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom left, #8fdaf5 , #23beff); /* 标准的语法（必须放在最后） */
 }
-.level-box{padding-top: 8%;}
+.level-box{padding-top: 6%;}
+.start-btn{width: 40%;}
+.img-box{width: 100%; text-align: center;}
+.userinfo-avatar {
+  display: inline-block; width: 160rpx; height: 160rpx; margin: 20rpx;
+  border-radius: 50%; background-size: cover; background-color: white;
+  vertical-align: middle;
+}

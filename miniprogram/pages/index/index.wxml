@@ -1,8 +1,15 @@
 <!--index.wxml-->
 <view class="container">
-  <view class='level-box'>
-    <button type='primary' bindtap='btnClickEvn'>开始挑战</button>
+  <view class='img-box'>
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
   </view>
+  <button type='primary' class='start-btn' bindtap='btnClickEvn'>开始挑战</button>
+
   <!-- <view class='level-box'>
     <button type='primary' size='mini' bindtap='btnClickEvn' data-type='1'>简单</button>
     <button type='primary' size='mini' bindtap='btnClickEvn' data-type='2'>正常</button>

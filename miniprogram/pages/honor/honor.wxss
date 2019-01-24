@@ -1,0 +1,6 @@
+.uploader, .tunnel {
+  height: auto; width: 100%; font-size: 32rpx; text-align: right;
+  flex-direction: column;
+  box-sizing: border-box; border-bottom: 2rpx solid #ddd;
+}
+.level-item{float: left;}

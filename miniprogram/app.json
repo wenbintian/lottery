@@ -1,7 +1,10 @@
 {
   "pages": [
+    "pages/honor/honor",
     "pages/index/index",
-    "pages/main/main"
+    "pages/main/main",
+    "pages/self/self"
+   
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -9,5 +12,12 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "记忆王",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "selectedColor":"#0099FF",
+    "list":[
+      {"pagePath":"pages/index/index","text":"首页","iconPath": "./images/tab/index_n.png","selectedIconPath": "./images/tab/index_a.png"},
+      {"pagePath": "pages/self/self","text":"我","iconPath": "./images/tab/self_n.png","selectedIconPath": "./images/tab/self_a.png"}
+    ]
   }
 }

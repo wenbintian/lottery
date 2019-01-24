@@ -3,16 +3,40 @@ const app = getApp()
 
 Page({
   data: {
+    avatarUrl: '../../images/user-unlogin.png',
+    userInfo: {},
+    logged:false
   },
 
   onShow: function(){
   },
   btnClickEvn(e){
-    wx.navigateTo({
-      url: '../main/main',
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'addLevel',
+      data: {},
+      success: res => {
+        console.log(res)
+      },
+      fail: err => {
+        console.log(err)
+      }
     })
-  },
 
+
+    // wx.navigateTo({
+    //   url: '../main/main',
+    // })
+  },
+  onGetUserInfo: function (e) {
+    if (!this.logged && e.detail.userInfo) {
+      this.setData({
+        logged: true,
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        userInfo: e.detail.userInfo
+      })
+    }
+  },
 
 
   onLoad: function() {

@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="uploader">
+    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
+      <text class='level-item'>第1关</text><text>文滨 5.55s 第2名</text>
+    </navigator>
+  </view>
+  <view class="uploader">
+    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
+      <text class='level-item'>第2关</text><text>文滨 5.55s 第2名</text>
+    </navigator>
+  </view>
+</view>
