@@ -23,8 +23,10 @@ page {
 .level-box{width: 100%; box-sizing: border-box; padding:6rpx 1%;}
 .level-box button{width: 23%; margin:0 1%;}
 /* 头部 */
-.box-title{overflow: hidden; width: 100%; box-sizing: border-box; padding: 1% 2%; color: #ffdbaf; text-align: center; font-size: 28rpx; line-height: 36rpx;}
-.box-title .box-title-item{float: left; width: 44%; box-sizing: border-box; background: #c916e5; margin: 2% 3%; border-radius: 4rpx; padding: 10rpx 0;}
+/* .box-title{overflow: hidden; width: 100%; box-sizing: border-box; padding: 1% 2%; color: #ffdbaf; text-align: center; font-size: 28rpx; line-height: 36rpx;} */
+.box-title{color: #ffdbaf; text-align: center; font-size: 28rpx; display:flex; display: -webkit-flex; justify-content:space-between; width: 100%; box-sizing: border-box; padding: 20rpx 2%;}
+
+.box-title .box-title-item{box-sizing: border-box; background: #c916e5; border-radius: 4rpx; padding: 10rpx 30rpx; min-width: 150rpx;}
 
 .box-item-inner.color_0{background-color: #FF6600;}
 .box-item-inner.color_1{background-color: #99FF00;}

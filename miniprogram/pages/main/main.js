@@ -86,16 +86,70 @@ Page({
     this.data.gameAllTime = parseFloat(this.data.gameAllTime) + parseFloat(nowTime);
     this.setData({ gameAllTime: this.data.gameAllTime.toFixed(2), nowGameTime:0});
     let tip = `恭喜过关，用时: ${nowTime}s`;
+
+    //提交当前关卡的成绩
+    wx.cloud.callFunction({
+      name: 'getByNameLevel',
+      data: {
+        level: _sel.data.theGameNum,
+        name: app.globalData.userInfo.nickName
+      },
+      success: res => {
+        console.log("changs",res)
+        let result = res.result.data;
+        if(result.length==1){
+          //出现新记录 本关卡的时间用时更短
+          if(parseFloat(result[0].time)>parseFloat(nowTime)){
+            _sel.addLevel("update",nowTime);
+          }
+        }else if(!result.length){
+          _sel.addLevel("add",nowTime);
+        }
+      },
+      fail: err => {
+        console.log(err)
+      }
+    })
+
     wx.showModal({
       content: tip,
-      showCancel: false,
+      cancelText: '再次挑战',
       confirmText: '下一关',
       success(res) {
         if (res.confirm) {
           _sel.data.theGameNum++;
           _sel.setData({ theGameNum: _sel.data.theGameNum});
           _sel.openTheGame();
+        }else if(res.cancel){
+          _sel.openTheGame();
         }
+      }
+    })
+  },
+  //重置本关
+  resetGameEvn(){
+    if (this.nowGameTimeTimer) clearInterval(this.nowGameTimeTimer);//关闭当前关卡的计时器
+    this.setData({ nowGameTime: 0 });//重置当前时间
+    this.openTheGame();
+  },
+  //type: "add"/"update"  对数据增加 或者更新
+  //time 本关用时
+  addLevel(type,time){
+    let _sel=this;
+    console.log(type)
+    wx.cloud.callFunction({
+      name: 'addLevel',
+      data: {
+        level: _sel.data.theGameNum,
+        name: app.globalData.userInfo.nickName,
+        time: time,
+        dbType: type
+      },
+      success: res => {
+        console.log("changs",res)
+      },
+      fail: err => {
+        console.log(err)
       }
     })
   },
@@ -103,7 +157,24 @@ Page({
   // theGameNum: 代表第几关
   openTheGame(){
     this.setLevelBox(this.data.theGameNum, true);
-    this.showTheTime(3);
+    let num = parseInt(this.data.theGameNum);
+    let time = 3;
+    if(num<9){
+      time=3;
+    } else if (num < 15) {
+      time = 5;
+    } else if (num < 18) {
+      time = 6;
+    } else if (num < 23) {
+      time = 8;
+    } else if (num < 25) {
+      time = 9;
+    } else if (num < 28) {
+      time = 10;
+    }else{
+      time = 12;
+    }
+    this.showTheTime(time);
   },
 
   //设置selected的值以及动画
@@ -221,14 +292,14 @@ Page({
     // nowGameTime: 0,//当前关用时（单位秒）
     // gameAllTime: 0,//所有关卡的总用时
     // theGameNum: 1,//当前是第几关
-    this.setData({ theGameNum: 1, gameAllTime: 0, nowGameTime: 0});
+    this.setData({ gameAllTime: 0, nowGameTime: 0});
 
     this.openTheGame();
   
   },
 
 
-  onLoad: function () {
+  onLoad: function (options) {
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
@@ -247,7 +318,9 @@ Page({
     //设置初始值
 
     this.boxTypeList = ["香蕉", "苹果", "橘子", "香橙", "火龙果", "蜜柚", "百香果", "西瓜", "冬瓜", "雪梨", "哈密瓜"];
-
+    //设置第几关    
+    // theGameNum: 1,//当前是第几关
+    this.setData({ theGameNum: options.gamenum || 1});
 
   },
 

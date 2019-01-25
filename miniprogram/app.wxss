@@ -6,3 +6,4 @@
   box-sizing: border-box;
 } 
 @import 'style/iconfont.wxss';
+@import 'style/weui.wxss';

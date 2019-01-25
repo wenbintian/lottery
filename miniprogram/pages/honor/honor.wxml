@@ -1,12 +1,17 @@
 <view class="container">
   <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text class='level-item'>第1关</text><text>文滨 5.55s 第2名</text>
-    </navigator>
+    <text>我的成绩</text>
   </view>
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text class='level-item'>第2关</text><text>文滨 5.55s 第2名</text>
-    </navigator>
+  <view class="weui-cells">
+      <view class="weui-cell" wx:for="{{selfList}}" wx:key="level">
+          <view class="weui-cell__bd weui-cell_primary">
+              <text>第{{item.level}}关</text>
+          </view>
+          <view class="weui-cell__ft">
+            <text class='honor-time'>{{item.time}}s</text>
+            <button data-level='{{item.level}}' bindtap='goLevelPage' class='honor-try-btn' type='primary' size='mini'>排行榜</button>
+            <button data-gamenum='{{item.level}}' bindtap='gameAgainEvn' class='honor-try-btn' type='primary' size='mini'>挑战</button>
+          </view>
+      </view>
   </view>
 </view>

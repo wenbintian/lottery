@@ -3,6 +3,5 @@
   padding: 20rpx 0 10rpx; color: #0099FF;
   box-sizing: border-box;
 }
-.level-item{display: block;}
 .weui-cells{width: 100%;}
 .honor-time,.honor-try-btn{vertical-align: middle; margin-left: 8rpx;}

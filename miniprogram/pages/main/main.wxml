@@ -3,14 +3,16 @@
 <view class="container">
   <view class='box-title'>
     <view class='box-title-item'>
-      <view>计时/总</view>
-      <view>{{nowGameTime}}/{{gameAllTime}}s</view>
+      {{nowGameTime}}s
     </view>
     <view class='box-title-item'>
-      <view>关卡</view>
-      <view class='iconfont t-icon-shiliu'>第{{theGameNum}}关</view>
+      第{{theGameNum}}关
+    </view>
+    <view class='box-title-item' bindtap='resetGameEvn'>
+      重置
     </view>
   </view>
+  
   <view class='box' style='height:{{boxHeight}}px;'>
     <view
       class='box-item' wx:for="{{boxList}}" wx:key="id"

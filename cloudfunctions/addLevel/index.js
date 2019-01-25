@@ -7,7 +7,26 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 const db = cloud.database()
-// collection 上的 get 方法会返回一个 Promise，因此云函数会在数据库异步取完数据后返回结果
+// 添加一条记录
 exports.main = async (event, context) => {
-  return db.collection('each_game_tb').get()
+
+	if(event.dbType=="add"){
+		return db.collection('each_game_tb').add({
+			data: { 
+			  level: ""+event.level,
+			  name: event.name,
+			  time: event.time,
+			  _openid: cloud.getWXContext().OPENID
+			}
+		});
+	}else{
+		
+		return db.collection('each_game_tb').where({level: ""+event.level,name: event.name})
+			.update({
+			data: { 
+			  time: event.time
+			}
+		});
+	}
+
 }

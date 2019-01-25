@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="uploader">
+    <text>第{{level}}关排行榜</text>
+  </view>
+  <view class="weui-cells">
+      <navigator class="weui-cell" wx:for="{{selfList}}" wx:key="level">
+          <view class="weui-cell__bd weui-cell_primary">
+              <text>第{{index+1}}名</text>
+          </view>
+          <view class="weui-cell__ft">
+            <text class='honor-time'>{{item.time}}s</text>
+            <text class='honor-time'>{{item.name}}</text>
+          </view>
+      </navigator>
+      <view class="weui-cell">
+        <text>暂无排名</text>
+      </view>
+  </view>
+</view>

@@ -6,14 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    selfList:[]
+    selfList: [],
+    level:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.data.level = options.level || 1;
+    this.setData({level:this.data.level});
   },
 
   /**
@@ -23,45 +25,21 @@ Page({
 
   },
 
-  createNoneList(res){
-    let arr=[];
-    for (var i = 0; i < 30; i++) {
-      arr.push({time:"0",level:i+1});
-    }
-     for (var i = 0,l=res.length; i < l; i++) {
-      arr[parseInt(res[i].level)-1].time = res[i].time;
-    }
-    this.data.selfList = arr;
-    this.setData({selfList:this.data.selfList});
-  },
-  gameAgainEvn(e){
-    e.stopPropagation;
-    let gamenum = e.currentTarget.dataset.gamenum;
-    wx.navigateTo({
-      url: "../main/main?gamenum="+gamenum
-    });
-  },
-
-  goLevelPage(e){
-    let level = e.currentTarget.dataset.level;
-    wx.navigateTo({
-      url: "../level/level?level="+level
-    });
-  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     // app.globalData.userInfo={};
     // app.globalData.userInfo.nickName="文滨";
-    let _sel=this;
-     wx.cloud.callFunction({
+    let _sel = this;
+    wx.cloud.callFunction({
       name: 'getByNameLevel',
       data: {
-        name: app.globalData.userInfo.nickName
+        level: _sel.data.level
       },
       success: res => {
-        _sel.createNoneList(res.result.data);
+        this.data.selfList = res.result.data;
+        this.setData({ selfList: this.data.selfList });
       },
       fail: err => {
         console.log(err)

@@ -11,5 +11,10 @@ App({
     }
 
     this.globalData = {}
+  },
+  onShareAppMessage: function () {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   }
 })

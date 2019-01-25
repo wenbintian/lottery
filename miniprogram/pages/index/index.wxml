@@ -8,12 +8,8 @@
       style="background-image: url({{avatarUrl}})"
     ></button>
   </view>
-  <button type='primary' class='start-btn' bindtap='btnClickEvn'>开始挑战</button>
-
-  <!-- <view class='level-box'>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='1'>简单</button>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='2'>正常</button>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='3'>难</button>
-    <button type='primary' size='mini' bindtap='btnClickEvn' data-type='4'>急难</button>
-  </view> -->
+  <button type='primary' class='start-btn' open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo" bindtap='btnClickEvn'>开始挑战</button>
+  <button type='primary' class='start-btn' open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo" bindtap='gameLevelEvn'>我的成绩</button>
 </view>

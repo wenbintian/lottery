@@ -10,7 +10,7 @@ page {
   background: linear-gradient(to bottom left, #8fdaf5 , #23beff); /* 标准的语法（必须放在最后） */
 }
 .level-box{padding-top: 6%;}
-.start-btn{width: 40%;}
+.start-btn{width: 40%; margin-bottom: 30rpx;}
 .img-box{width: 100%; text-align: center;}
 .userinfo-avatar {
   display: inline-block; width: 160rpx; height: 160rpx; margin: 20rpx;

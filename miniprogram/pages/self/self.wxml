@@ -12,9 +12,9 @@
     </view>
   </view>
   <!-- 各关排名 -->
-  <view class="uploader">
+  <view class="uploader" wx:if="{{userInfo.nickName}}">
     <navigator url="../honor/honor" open-type="navigate" class="uploader-text">
-      <text>第1关</text><text>第2名</text>
+      <text>我的成绩</text>
     </navigator>
   </view>
 </view>

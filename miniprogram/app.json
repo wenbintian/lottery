@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/honor/honor",
     "pages/index/index",
     "pages/main/main",
-    "pages/self/self"
+    "pages/honor/honor",
+    "pages/self/self",
+    "pages/level/level"
    
   ],
   "window": {
