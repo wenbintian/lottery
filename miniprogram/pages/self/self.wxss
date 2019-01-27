@@ -19,7 +19,7 @@ page {
 }
 
 .userinfo-avatar {
-  width: 100rpx;
+  width: 100rpx; padding: 0;
   height: 100rpx;
   margin: 20rpx;
   border-radius: 50%;
@@ -55,3 +55,4 @@ page {
   font-size: 34rpx;
   color: #007aff;
 }
+.user-img{width: 100%; height: 100%;}

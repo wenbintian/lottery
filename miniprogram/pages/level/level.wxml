@@ -2,18 +2,24 @@
   <view class="uploader">
     <text>第{{level}}关排行榜</text>
   </view>
-  <view class="weui-cells">
-      <navigator class="weui-cell" wx:for="{{selfList}}" wx:key="level">
-          <view class="weui-cell__bd weui-cell_primary">
-              <text>第{{index+1}}名</text>
-          </view>
-          <view class="weui-cell__ft">
-            <text class='honor-time'>{{item.time}}s</text>
-            <text class='honor-time'>{{item.name}}</text>
-          </view>
-      </navigator>
-      <view class="weui-cell">
-        <text>暂无排名</text>
-      </view>
+  <view class='my-box self_box' wx:if="{{mySelfData}}">
+    <view class='my-box-item'>
+      <text class='my-list-index'>{{mySelfData.uiIndex}}</text>
+      <image class='my-list-image' mode='aspectFit' src='{{mySelfData.avatarUrl}}'></image>
+      <text class='my-list-text'>{{mySelfData.name}}</text>
+    </view>
+    <view class='my-box-item'><text class='my-list-time'>{{mySelfData.time}}s</text></view>
+  </view>
+  <view class='my-box' wx:for="{{selfList}}" wx:key="_openid">
+    <view class='my-box-item'>
+      <text class='my-list-index' wx:if="{{index > 2}}">{{index+1}}</text>
+      <image class='my-list-honor' mode='aspectFit' src='../../images/honor/{{index==0 ? "冠军" : (index==1 ? "亚军" : "季军")}}.png' wx:else></image>
+      <image class='my-list-image image_{{index}}' mode='aspectFit' src='{{item.avatarUrl || "../../images/user-unlogin.png"}}'></image>
+      <text class='my-list-text'>{{item.name}}</text>
+    </view>
+    <view class='my-box-item'><text class='my-list-time'>{{item.time}}s</text></view>
+  </view>
+  <view class="weui-cell" wx:if="{{!selfList.length}}">
+    <text>暂无排名</text>
   </view>
 </view>

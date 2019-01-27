@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    mySelfData:null,//我的排名
     selfList: [],
     level:1
   },
@@ -32,6 +33,7 @@ Page({
     // app.globalData.userInfo={};
     // app.globalData.userInfo.nickName="文滨";
     let _sel = this;
+    wx.showLoading();
     wx.cloud.callFunction({
       name: 'getByNameLevel',
       data: {
@@ -40,12 +42,27 @@ Page({
       success: res => {
         this.data.selfList = res.result.data;
         this.setData({ selfList: this.data.selfList });
+        this.setMySelfData(this.data.selfList);
+        wx.hideLoading();
       },
       fail: err => {
+        wx.hideLoading();
         console.log(err)
       }
     })
 
+  },
+  setMySelfData(res){
+    this.data.mySelfData=null;
+    let nickName = app.globalData.userInfo.nickName;
+    for(let i=0,l=res.length; i<l; i++){
+      if (nickName == res[i].name){
+        this.data.mySelfData = res[i];
+        this.data.mySelfData.uiIndex = i+1;
+        break;
+      }
+    }
+    this.setData({mySelfData: this.data.mySelfData});
   },
 
   /**

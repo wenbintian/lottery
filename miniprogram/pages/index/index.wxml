@@ -5,11 +5,13 @@
       open-type="getUserInfo" 
       bindgetuserinfo="onGetUserInfo"
       class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
+ 
+    ><image class='user-img' src='{{avatarUrl}}'></image></button>
+    
   </view>
   <button type='primary' class='start-btn' open-type="getUserInfo" 
       bindgetuserinfo="onGetUserInfo" bindtap='btnClickEvn'>开始挑战</button>
   <button type='primary' class='start-btn' open-type="getUserInfo" 
       bindgetuserinfo="onGetUserInfo" bindtap='gameLevelEvn'>我的成绩</button>
+    <navigator class='about-btn' url='../about/about'>版权与打赏</navigator>
 </view>

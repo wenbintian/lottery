@@ -9,6 +9,26 @@ Page({
   },
 
   onShow: function(){
+    this.doGetUserInfo();
+  },
+  doGetUserInfo() {
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo
+              });
+              app.globalData.userInfo = res.userInfo
+            }
+          })
+        }
+      }
+    })
   },
   btnClickEvn(e){
     if(app.globalData.userInfo.nickName){
@@ -16,6 +36,7 @@ Page({
         url: '../main/main',
       })
     }
+    console.log(app.globalData.userInfo)
   },
   gameLevelEvn(){
     if (app.globalData.userInfo.nickName) {
@@ -31,7 +52,8 @@ Page({
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       })
-      app.globalData.userInfo = e.detail.userInfo
+      app.globalData.userInfo = e.detail.userInfo;
+
     }
   },
 
@@ -44,24 +66,6 @@ Page({
       return
     }
 
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-              app.globalData.userInfo = res.userInfo
-              console.log("res", res.userInfo);
-            }
-          })
-        }
-      }
-    })
   },
    onShareAppMessage: function () {
 

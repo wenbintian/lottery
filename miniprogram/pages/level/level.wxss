@@ -5,3 +5,26 @@
 }
 .weui-cells{width: 100%;}
 .honor-time,.honor-try-btn{vertical-align: middle; margin-left: 8rpx;}
+
+.my-box{display: flex; display: -webkit-flex; justify-content: space-between; width: 96%; margin-left: 4%; box-sizing: border-box; padding-right: 4%; border-bottom: 2rpx solid #ddd;}
+.my-box.self_box{
+  width: 100%; margin: 0; padding-left: 4%;
+    /* background: -webkit-linear-gradient(left top, red, orange, yellow, green, blue, indigo, violet); */
+    /* background: -o-linear-gradient(bottom right, red, orange, yellow, green, blue, indigo, violet); */
+    /* background: -moz-linear-gradient(bottom right, red, orange, yellow, green, blue, indigo, violet); */
+    /* background: linear-gradient(to bottom right, #FF0099, #0099FF, #CC9900, #FF0099); */
+    background: #3386ff; color: #fff;border-bottom: 20rpx solid #ddd;
+}
+.my-box.self_box .my-list-index{color: #fe2995;}
+.my-box.self_box .my-list-text{color: #fff;}
+.my-box.self_box .my-list-time{font-weight: bold;}
+
+.my-box-item{height: 126rpx; position: relative; font-size: 32rpx;}
+.my-list-index{vertical-align: middle; display: inline-block; width: 80rpx; text-align: center; color: #000; font-weight: bold;}
+.my-list-image{height: 100rpx; width: 100rpx; margin: 13rpx 20rpx 13rpx 10rpx; vertical-align: middle; border-radius: 50%; border: 2rpx solid #ddd;}
+.image_0{border:2rpx  solid #fe2995;}
+.image_1{border:2rpx  solid #efefef;}
+.image_2{border:2rpx  solid #e5aa33;}
+.my-list-text{ vertical-align: middle; color: #000;}
+.my-list-time{color: #fe2995; line-height: 126rpx;}
+.my-list-honor{width: 76rpx; height: 100%; vertical-align: middle; padding: 0 2rpx;}

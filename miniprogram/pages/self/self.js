@@ -1,3 +1,4 @@
+const app = getApp()
 // pages/self/self.js
 Page({
 
@@ -9,11 +10,7 @@ Page({
     userInfo: {},
     logged: false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  doGetUserInfo(){
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -24,12 +21,20 @@ Page({
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo
-              })
+              });
+              app.globalData.userInfo = res.userInfo;
             }
           })
         }
       }
     })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // 获取用户信息
+   
   },
 
   /**
@@ -45,13 +50,14 @@ Page({
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       })
+      app.globalData.userInfo = e.detail.userInfo;
     }
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.doGetUserInfo();
   },
 
   /**

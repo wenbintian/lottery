@@ -55,15 +55,18 @@ Page({
     // app.globalData.userInfo={};
     // app.globalData.userInfo.nickName="文滨";
     let _sel=this;
-     wx.cloud.callFunction({
+    wx.showLoading();
+    wx.cloud.callFunction({
       name: 'getByNameLevel',
       data: {
         name: app.globalData.userInfo.nickName
       },
       success: res => {
         _sel.createNoneList(res.result.data);
+        wx.hideLoading();
       },
       fail: err => {
+        wx.hideLoading();
         console.log(err)
       }
     })

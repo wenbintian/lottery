@@ -13,7 +13,9 @@ page {
 .start-btn{width: 40%; margin-bottom: 30rpx;}
 .img-box{width: 100%; text-align: center;}
 .userinfo-avatar {
-  display: inline-block; width: 160rpx; height: 160rpx; margin: 20rpx;
+  display: inline-block; width: 160rpx; height: 160rpx; margin: 20rpx; padding: 0;
   border-radius: 50%; background-size: cover; background-color: white;
   vertical-align: middle;
 }
+.user-img{width: 100%; height: 100%;}
+.about-btn{text-align: center; position: fixed; left: 0; right: 0; bottom: 10rpx; color: #ddd;}

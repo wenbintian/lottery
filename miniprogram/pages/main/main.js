@@ -105,6 +105,7 @@ Page({
         }else if(!result.length){
           _sel.addLevel("add",nowTime);
         }
+        _sel.updateAvatarUrl();
       },
       fail: err => {
         console.log(err)
@@ -131,6 +132,20 @@ Page({
     if (this.nowGameTimeTimer) clearInterval(this.nowGameTimeTimer);//关闭当前关卡的计时器
     this.setData({ nowGameTime: 0 });//重置当前时间
     this.openTheGame();
+  },
+  updateAvatarUrl(adUrl){
+    wx.cloud.callFunction({
+      name: 'updateAvatarUrl',
+      data: {
+        avatarUrl: app.globalData.userInfo.avatarUrl
+      },
+      success: res => {
+        console.log(res)
+      },
+      fail: err => {
+        console.log(err)
+      }
+    })
   },
   //type: "add"/"update"  对数据增加 或者更新
   //time 本关用时

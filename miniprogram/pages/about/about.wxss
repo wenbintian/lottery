@@ -1,0 +1,4 @@
+/* pages/about/about.wxss */
+.about-info{font-size: 32rpx; text-indent: 64rpx; padding: 30rpx;}
+.about-info.apply{text-indent: 0;}
+.about-money{width: 100%; height: 780rpx;}

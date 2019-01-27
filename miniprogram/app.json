@@ -1,17 +1,19 @@
 {
   "pages": [
+  
     "pages/index/index",
     "pages/main/main",
+    "pages/level/level",
     "pages/honor/honor",
     "pages/self/self",
-    "pages/level/level"
+    "pages/about/about"
    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "记忆王",
+    "navigationBarTitleText": "记忆之王",
     "navigationBarTextStyle": "black"
   },
   "tabBar":{

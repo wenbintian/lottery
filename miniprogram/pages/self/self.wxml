@@ -6,7 +6,7 @@
       bindgetuserinfo="onGetUserInfo"
       class="userinfo-avatar"
       style="background-image: url({{avatarUrl}})"
-    ></button>
+    ><image class='user-img' src='{{avatarUrl}}'></image></button>
     <view>
       <button class="userinfo-nickname" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">{{userInfo.nickName || "获取权限"}}</button>
     </view>
@@ -15,6 +15,12 @@
   <view class="uploader" wx:if="{{userInfo.nickName}}">
     <navigator url="../honor/honor" open-type="navigate" class="uploader-text">
       <text>我的成绩</text>
+    </navigator>
+  </view>
+    <!-- 版权与打赏 -->
+  <view class="uploader">
+    <navigator url="../about/about" open-type="navigate" class="uploader-text">
+      <text>版权与打赏</text>
     </navigator>
   </view>
 </view>
