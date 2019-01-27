@@ -272,10 +272,12 @@ Page({
 
         //创建 当前关卡的 计时时间
         if (this.nowGameTimeTimer) clearInterval(this.nowGameTimeTimer);
+        this.curStartTime = new Date().getTime();
         this.nowGameTimeTimer = setInterval(()=>{
-          this.data.nowGameTime = 0.01 + parseFloat(this.data.nowGameTime);
+          //对 getTime获取的毫秒 ms 进行差值计算 得到时间
+          this.data.nowGameTime = (new Date().getTime() - this.curStartTime)/1000; 
           this.setData({ nowGameTime: this.data.nowGameTime.toFixed(2)});
-        },10);
+        },68);
 
       }else{
         this.data.lastTime--;
@@ -313,7 +315,14 @@ Page({
   
   },
 
-
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    //创建 当前关卡的 计时时间
+    if (this.nowGameTimeTimer) clearInterval(this.nowGameTimeTimer);
+    if (this.lastTimeTimer) clearInterval(this.lastTimeTimer);
+  },
   onLoad: function (options) {
     if (!wx.cloud) {
       wx.redirectTo({

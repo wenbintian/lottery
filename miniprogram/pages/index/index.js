@@ -4,8 +4,7 @@ const app = getApp()
 Page({
   data: {
     avatarUrl: '../../images/user-unlogin.png',
-    userInfo: {},
-    logged:false
+    userInfo: {}
   },
 
   onShow: function(){
@@ -46,9 +45,8 @@ Page({
     }
   },
   onGetUserInfo: function (e) {
-    if (!this.logged && e.detail.userInfo) {
+    if (!app.globalData.userInfo.nickName && e.detail.userInfo) {
       this.setData({
-        logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       })

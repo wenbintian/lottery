@@ -10,8 +10,11 @@ App({
       })
     }
 
-    this.globalData = {};
+    this.globalData = { userInfo:{}};
     this.checkNewVersion();
+  },
+  globalData:{
+    userInfo:{}
   },
   onShareAppMessage: function () {
     wx.showShareMenu({

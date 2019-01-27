@@ -1,6 +1,6 @@
 /* pages/main/main.wxss */
 page {
-  background: #409EFF;
+background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   display: flex; font-size: 32rpx;
   flex-direction: column;
   justify-content: flex-start;
@@ -41,7 +41,7 @@ page {
 .box-item-inner.color_10{background-color: #666;}
 .box-item-inner.color_11{background-color: #006600;}
 .box-item-inner.color_12{background-color: #660099;}
-.box-item-inner.color_normal{background-color: #FFCC99;}
+.box-item-inner.color_normal{background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);}
 
 .mask{position: fixed; width: 100%; height: 100%; z-index: 100;}
 .start-num{position: absolute; top: 50%; left: 50%; border-radius: 10rpx; margin-left:-115rpx; margin-top: -115rpx; width: 230rpx; height: 230rpx; text-align: center; background: rgba(0, 0, 0, 0.6); line-height: 230rpx; font-size: 80rpx; color: #fff;}

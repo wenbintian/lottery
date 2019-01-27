@@ -4,10 +4,7 @@ page {
   display: flex; font-size: 32rpx;
   flex-direction: column;
   justify-content: flex-start;
-  background: -webkit-linear-gradient(right top, #8fdaf5 , #23beff); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(bottom left, #8fdaf5, #23beff); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(bottom left, #8fdaf5, #23beff); /* Firefox 3.6 - 15 */
-  background: linear-gradient(to bottom left, #8fdaf5 , #23beff); /* 标准的语法（必须放在最后） */
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
 }
 .level-box{padding-top: 6%;}
 .start-btn{width: 40%; margin-bottom: 30rpx;}
