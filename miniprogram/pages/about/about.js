@@ -7,7 +7,13 @@ Page({
   data: {
 
   },
-
+  previewEvn(e){
+    let url = e.currentTarget.dataset.src;
+    wx.previewImage({
+      current:url,
+      urls: [url]
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

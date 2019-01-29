@@ -2,6 +2,6 @@
   <text class='about-info'>本产品是由 twenbin 独自打造的，一款能够花更少的时间就能大大提高使用者记忆的娱乐小程序。</text>
   <view class='about-info apply'>您的支持是我前进的最大动力!</view>
   <!-- <view> -->
-    <image class='about-money' mode='aspectFit' src='../../images/money.jpg'></image>
+    <image class='about-money' mode='aspectFit' src='https://7370-spl20190114-16-1258510204.tcb.qcloud.la/money.jpg?sign=c684c2ffd50f00c153ad7416045a8e2f&t=1548645296' bindtap='previewEvn' data-src='https://7370-spl20190114-16-1258510204.tcb.qcloud.la/money.jpg?sign=c684c2ffd50f00c153ad7416045a8e2f&t=1548645296'></image>
   <!-- </view> -->
 </view>
