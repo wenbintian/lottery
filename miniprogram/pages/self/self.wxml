@@ -23,4 +23,8 @@
       <text>版权与打赏</text>
     </navigator>
   </view>
+    <!-- 版权与打赏 -->
+  <view class="uploader">
+    <button type='primary' class="btn_box" open-type="contact" bindcontact="handleContact">客服</button>
+  </view>
 </view>

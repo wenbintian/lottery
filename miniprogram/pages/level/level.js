@@ -40,7 +40,9 @@ Page({
         level: _sel.data.level
       },
       success: res => {
-        this.data.selfList = res.result.data;
+        this.data.selfList = res.result.data.sort((a,b)=>{
+          return parseFloat(a.time) - parseFloat(b.time);
+        });
         this.setData({ selfList: this.data.selfList });
         this.setMySelfData(this.data.selfList);
         wx.hideLoading();
